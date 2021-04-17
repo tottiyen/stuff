@@ -12,7 +12,7 @@ const config = require('./config/database');
 //passport config:
 require('./config/passport')(passport)
 //mongoose
-mongoose.connect('[mongodb_code]',{useNewUrlParser: true, useUnifiedTopology : true})
+mongoose.connect('mongodb+srv://mamacita:mamacita@cluster0.mywvm.mongodb.net/maindb?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology : true})
 .then(() => console.log('db1 connected,,'))
 .catch((err)=> console.log(err));
   
